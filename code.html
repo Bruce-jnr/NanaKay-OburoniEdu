@@ -1,0 +1,944 @@
+<!doctype html>
+
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+      Oburoni Educational Consult | Empowering Your Academic Journey
+    </title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'on-secondary-container': '#785a1a',
+              'surface-tint': '#515f78',
+              'surface-container-low': '#f0f3ff',
+              'on-secondary-fixed': '#261900',
+              outline: '#75777e',
+              'on-primary-container': '#76849f',
+              'on-tertiary-fixed-variant': '#454748',
+              'on-tertiary': '#ffffff',
+              'surface-container': '#e7eeff',
+              'on-error-container': '#93000a',
+              'on-secondary-fixed-variant': '#5d4201',
+              'tertiary-fixed': '#e1e3e4',
+              'on-tertiary-container': '#828485',
+              'surface-variant': '#d8e3fa',
+              'secondary-fixed': '#ffdea5',
+              'surface-dim': '#cfdaf1',
+              'inverse-on-surface': '#ebf1ff',
+              'inverse-surface': '#263142',
+              'primary-container': '#0d1c32',
+              'on-error': '#ffffff',
+              'outline-variant': '#c5c6cd',
+              'tertiary-fixed-dim': '#c5c7c8',
+              'on-primary-fixed-variant': '#39475f',
+              'surface-container-high': '#dee8ff',
+              'on-surface': '#111c2c',
+              error: '#ba1a1a',
+              'tertiary-container': '#191c1d',
+              'secondary-container': '#fed488',
+              primary: '#000000',
+              'primary-fixed': '#d6e3ff',
+              surface: '#f9f9ff',
+              'on-primary': '#ffffff',
+              'primary-fixed-dim': '#b9c7e4',
+              'on-surface-variant': '#44474d',
+              tertiary: '#000000',
+              'on-background': '#111c2c',
+              'error-container': '#ffdad6',
+              'on-secondary': '#ffffff',
+              'surface-container-lowest': '#ffffff',
+              'on-tertiary-fixed': '#191c1d',
+              background: '#f9f9ff',
+              'inverse-primary': '#b9c7e4',
+              'on-primary-fixed': '#0d1c32',
+              secondary: '#775a19',
+              'secondary-fixed-dim': '#e9c176',
+              'surface-bright': '#f9f9ff',
+              'surface-container-highest': '#d8e3fa',
+            },
+            borderRadius: {
+              DEFAULT: '0.125rem',
+              lg: '0.25rem',
+              xl: '0.5rem',
+              full: '0.75rem',
+            },
+            spacing: {
+              'container-max': '1280px',
+              'margin-desktop': '40px',
+              unit: '8px',
+              'margin-mobile': '16px',
+              gutter: '24px',
+            },
+            fontFamily: {
+              'title-lg': ['Montserrat'],
+              'body-md': ['Inter'],
+              'label-sm': ['Inter'],
+              'headline-md-mobile': ['Montserrat'],
+              'headline-md': ['Montserrat'],
+              'label-md': ['Inter'],
+              'display-lg-mobile': ['Montserrat'],
+              'display-lg': ['Montserrat'],
+              'body-lg': ['Inter'],
+            },
+            fontSize: {
+              'title-lg': ['20px', { lineHeight: '28px', fontWeight: '600' }],
+              'body-md': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+              'label-sm': [
+                '12px',
+                {
+                  lineHeight: '16px',
+                  letterSpacing: '0.05em',
+                  fontWeight: '600',
+                },
+              ],
+              'headline-md-mobile': [
+                '24px',
+                { lineHeight: '32px', fontWeight: '600' },
+              ],
+              'headline-md': [
+                '32px',
+                { lineHeight: '40px', fontWeight: '600' },
+              ],
+              'label-md': [
+                '14px',
+                {
+                  lineHeight: '20px',
+                  letterSpacing: '0.01em',
+                  fontWeight: '500',
+                },
+              ],
+              'display-lg-mobile': [
+                '32px',
+                {
+                  lineHeight: '40px',
+                  letterSpacing: '-0.01em',
+                  fontWeight: '700',
+                },
+              ],
+              'display-lg': [
+                '48px',
+                {
+                  lineHeight: '56px',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '700',
+                },
+              ],
+              'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+      }
+      .bento-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .bento-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0px 10px 30px rgba(10, 25, 47, 0.08);
+      }
+      .text-glow {
+        text-shadow: 0 0 20px rgba(254, 212, 136, 0.3);
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+    <!-- TopNavBar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm duration-300 ease-in-out"
+    >
+      <div
+        class="flex justify-between items-center max-w-container-max mx-auto px-margin-desktop h-16"
+      >
+        <div
+          class="font-title-lg text-title-lg font-bold text-primary dark:text-inverse-primary tracking-tight"
+        >
+          Oburoni Educational Consult
+        </div>
+        <div class="hidden md:flex gap-8 items-center">
+          <a
+            class="font-label-md text-label-md text-secondary dark:text-secondary-fixed font-bold border-b-2 border-secondary transition-colors duration-300"
+            href="#home"
+            >Home</a
+          >
+          <a
+            class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300"
+            href="#about"
+            >About Us</a
+          >
+          <a
+            class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300"
+            href="#services"
+            >Services</a
+          >
+          <a
+            class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300"
+            href="#contact"
+            >Contact</a
+          >
+          <button
+            class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:bg-secondary transition-all duration-300"
+          >
+            Apply Now
+          </button>
+        </div>
+        <!-- Mobile Menu Toggle -->
+        <button class="md:hidden text-primary" id="mobile-menu-btn">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section
+      class="relative pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden bg-primary-container text-on-primary"
+      id="home"
+    >
+      <div
+        class="max-w-container-max mx-auto px-margin-desktop relative z-10 grid md:grid-cols-2 gap-12 items-center"
+      >
+        <div class="space-y-8">
+          <div
+            class="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 px-4 py-1.5 rounded-full"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-secondary animate-pulse"
+            ></span>
+            <span
+              class="text-secondary font-label-sm text-label-sm uppercase tracking-wider"
+              >Global Admissions 2024</span
+            >
+          </div>
+          <h1
+            class="font-display-lg text-display-lg md:text-display-lg leading-tight tracking-tighter"
+          >
+            Your Gateway to <br />
+            <span class="text-secondary-container text-glow"
+              >Academic Excellence</span
+            >
+          </h1>
+          <p
+            class="font-body-lg text-body-lg text-on-primary-container/90 max-w-lg"
+          >
+            Comprehensive consulting services designed to bridge the gap between
+            your local academic background and international career aspirations.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button
+              class="bg-secondary text-primary font-bold px-10 py-4 rounded-lg shadow-lg hover:bg-secondary-container transition-all flex items-center justify-center gap-2"
+            >
+              Apply Now
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+            <button
+              class="border border-outline-variant text-on-primary font-bold px-10 py-4 rounded-lg hover:bg-on-primary/5 transition-all"
+            >
+              View Programs
+            </button>
+          </div>
+        </div>
+        <div class="relative hidden md:block">
+          <div
+            class="absolute -inset-4 bg-secondary/20 blur-3xl rounded-full"
+          ></div>
+          <div
+            class="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl"
+          >
+            <img
+              class="w-full aspect-[4/5] object-cover"
+              data-alt="A professional and inspiring scene featuring a diverse group of focused students collaborating in a modern, sunlit university library. The lighting is warm and academic, emphasizing a light-mode aesthetic with soft highlights. The environment includes stacks of scholarly books and digital devices, representing a blend of traditional and modern education. High-resolution, professional photography style with a deep navy and gold color palette integrated into the architectural details."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDumgtZpOcZx2-P6424J4VGeY0D6L7UHAmH8EN2Dn9DB0x1m-5WhLxQXgKoFedQxqBfezP6Mz3qWCOM4Z4aru1xCbXtpGpX1WTLzBgF9a9keVl0I6c33IL9ZWhRK_6s2C-GTOqOELq-7qgQPYDy-nz6_NgAupZCpvQUdurzrJTHSXNEntKxkHJDbOi38GUJVwaqHfjv3YxaY0dPf8fkK5TJ_Nz-suJ4PWds5cVm5i3hdBLYoygi4qCjXQUmk-wjxgGVWMc-hPbqeD4K"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Stats Bar -->
+    <section
+      class="bg-white border-y border-outline-variant py-8 relative z-20 -mt-10 md:-mt-12 mx-auto max-w-5xl rounded-xl shadow-xl"
+    >
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 divide-x divide-outline-variant"
+      >
+        <div class="text-center px-4">
+          <div class="text-secondary text-headline-md font-bold">98%</div>
+          <div
+            class="text-on-surface-variant font-label-sm uppercase tracking-widest"
+          >
+            Visa Success Rate
+          </div>
+        </div>
+        <div class="text-center px-4">
+          <div class="text-secondary text-headline-md font-bold">500+</div>
+          <div
+            class="text-on-surface-variant font-label-sm uppercase tracking-widest"
+          >
+            School Placements
+          </div>
+        </div>
+        <div class="text-center px-4">
+          <div class="text-secondary text-headline-md font-bold">1200+</div>
+          <div
+            class="text-on-surface-variant font-label-sm uppercase tracking-widest"
+          >
+            SAT Training Hours
+          </div>
+        </div>
+        <div class="text-center px-4">
+          <div class="text-secondary text-headline-md font-bold">24/7</div>
+          <div
+            class="text-on-surface-variant font-label-sm uppercase tracking-widest"
+          >
+            Student Support
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Us -->
+    <section class="py-24 md:py-32 bg-surface overflow-hidden" id="about">
+      <div class="max-w-container-max mx-auto px-margin-desktop">
+        <div class="flex flex-col md:flex-row gap-16 items-center">
+          <div class="flex-1 space-y-6">
+            <h2 class="font-headline-md text-headline-md text-primary">
+              Empowering Future Global Professionals
+            </h2>
+            <p
+              class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed"
+            >
+              At Oburoni Educational Consult, we believe education is the most
+              powerful tool for global mobility. Our mission is to provide
+              students with the expert guidance and preparation needed to
+              succeed in international exams and university applications.
+            </p>
+            <div class="space-y-4 pt-4">
+              <div class="flex items-start gap-4">
+                <span
+                  class="material-symbols-outlined text-secondary bg-secondary-container/20 p-2 rounded-lg"
+                  >verified</span
+                >
+                <div>
+                  <h4 class="font-title-lg text-title-lg text-primary">
+                    Our Vision
+                  </h4>
+                  <p class="text-on-surface-variant">
+                    To be the preferred gateway for African students seeking
+                    elite global education.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span
+                  class="material-symbols-outlined text-secondary bg-secondary-container/20 p-2 rounded-lg"
+                  >history_edu</span
+                >
+                <div>
+                  <h4 class="font-title-lg text-title-lg text-primary">
+                    Our Legacy
+                  </h4>
+                  <p class="text-on-surface-variant">
+                    Years of proven success in navigating complex international
+                    admissions and visa protocols.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 grid grid-cols-2 gap-4">
+            <div class="space-y-4">
+              <img
+                class="w-full h-64 object-cover rounded-xl shadow-lg mt-12"
+                data-alt="A focused student sitting in a bright workspace, preparing for international nursing exams with specialized textbooks and a laptop. The room is filled with soft, natural morning light, creating a professional and scholarly atmosphere. The aesthetic is modern and minimalist, featuring accents of navy and gold in the decor."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBElBNrpcJv-5kxZj8K5cdson2MdLkUSORxdojZDHXz9VDJ3BaZruwffI1NLfqAHLzOk0UGpPTLcC_gaHRJm2nZlutajAQqZAOPHlC8XEfbXcm2n9JVxSMqK2f2W98SlQQ37QDBdvZo_AUvGeDLShUEuKSJZAF-1QkzvS8zD9pS01zMSubFEDYCkZM4hDq73tB6Qv5hyU_JGsy2dkRSiv3OOaR_siKFNNHZQbZTa674xeUDc8fSLJlXhwh9PFmG0EUSsAKmQi0P1wZh"
+              />
+              <img
+                class="w-full h-48 object-cover rounded-xl shadow-lg"
+                data-alt="An overhead shot of an organized desk with a student's hand marking important dates on a calendar for school applications. The desk is clean, featuring a cup of coffee and high-quality stationery. The lighting is clear and bright, emphasizing a productive and academic environment with a luxury corporate feel."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDkNXBi9N0SEoGt7HX-jfvl5M1-8RDMnbfASJQtkv5T4-E-u8iNBzptOcWE573bDtKt9uFKbalanvDs3Q0RuErnRQrqc7cOfvGs3qmJHCKiKBiUHUScroBoQA8bSPrG7pjrGLiCrTK6ZBSQc2Yxz-YqNQFmmHttX4mDSU6fiImWMqFz40KQCNbwrAb450qyZUf4wBlFmP1lO8EvUjPKSEw2OBe_badroD-sNtQPU9UrK2Tqr0g3FufghmCBHYT8olhBylomtjJDA9B"
+              />
+            </div>
+            <div class="space-y-4">
+              <img
+                class="w-full h-48 object-cover rounded-xl shadow-lg"
+                data-alt="A smiling student receiving an acceptance letter in front of an iconic university building with neoclassical architecture. The scene is bright and triumphant, captured in golden hour light to evoke a sense of achievement and aspiration. High-quality editorial style with soft depth of field."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Td8cjeM8DtCNIEVwTnuqcjkJ1jJWrIH77kxYehT9q1mfs52Dkuye78YlBnFuicIEJpM4s5gGc-fSeUx8rtprehW1lFduNkaUKuQskhrkLipUq6iSAXNcSEhlTHM2ZUsJF0U7TZzESm-NIlrkNrhppGwwUHASe5LqWQQdoE0bvo99-7YKdedWmsTvfPjFhZy-DDjsYozNBzufEaI-RCSMeco-0ufUGBH3dE7p_-YXyOhqB6civIYrEdh8zjdwBjIwjMgwbAO_cHcg"
+              />
+              <img
+                class="w-full h-64 object-cover rounded-xl shadow-lg"
+                data-alt="A group of nursing students in clean white scrubs attending a specialized seminar led by a professional consultant. The setting is a modern lecture hall with clear instructional displays. The mood is serious, professional, and educational, with high-key lighting and clean lines."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsAq98T-Q8PM-nzyL_YYoegqg_6brOx9NisIAA1kRTWYNx3DBvowDoCSGO-24kHfSADQO0PNBbBXTne8nECWilgWpXhaBwg0O6zUTA-_tpnCUwpsKUBfnoGoxjH2QdAA1g6rxuvPpC8_boQFHcDTA8w7x8hZYhNMzp6CM_LAamzN89vxlXL4rDbeU6vrQYBJM7aEF1Sb2zl3qgFZyhCNbyEHpOtbl0EVpIax3S9aEAvNQ3hXCIT9RuUBeI5IJfaRqQ_geSCS9v0Uz4"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Section -->
+    <section class="py-24 bg-primary-container text-on-primary" id="services">
+      <div class="max-w-container-max mx-auto px-margin-desktop">
+        <div class="text-center mb-16 space-y-4">
+          <h2 class="font-headline-md text-headline-md">
+            Our Specialized Services
+          </h2>
+          <p
+            class="font-body-lg text-body-lg text-on-primary-container max-w-2xl mx-auto"
+          >
+            Tailored consulting solutions designed to navigate every step of
+            your international academic journey.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6">
+          <!-- Service 1: SAT Prep -->
+          <div
+            class="bento-card bg-surface/5 border border-white/10 p-8 rounded-xl flex flex-col justify-between min-h-[320px] group hover:bg-secondary hover:text-primary"
+          >
+            <div>
+              <span
+                class="material-symbols-outlined text-4xl text-secondary group-hover:text-primary transition-colors mb-6"
+                >school</span
+              >
+              <h3 class="font-title-lg text-title-lg mb-4">SAT Prep</h3>
+              <ul
+                class="space-y-2 font-label-md text-label-md text-on-primary-container group-hover:text-primary/80"
+              >
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Intensive Coaching
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Mock Exam Drills
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Strategy Workshops
+                </li>
+              </ul>
+            </div>
+            <div class="pt-6 group-hover:text-primary">
+              <span class="material-symbols-outlined">arrow_outward</span>
+            </div>
+          </div>
+          <!-- Service 2: Nursing Exams -->
+          <div
+            class="bento-card bg-surface/5 border border-white/10 p-8 rounded-xl flex flex-col justify-between min-h-[320px] group hover:bg-secondary hover:text-primary"
+          >
+            <div>
+              <span
+                class="material-symbols-outlined text-4xl text-secondary group-hover:text-primary transition-colors mb-6"
+                >medical_services</span
+              >
+              <h3 class="font-title-lg text-title-lg mb-4">Nursing Exams</h3>
+              <ul
+                class="space-y-2 font-label-md text-label-md text-on-primary-container group-hover:text-primary/80"
+              >
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Level 300 Support
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Level 400 Finals
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Licensure Readiness
+                </li>
+              </ul>
+            </div>
+            <div class="pt-6 group-hover:text-primary">
+              <span class="material-symbols-outlined">arrow_outward</span>
+            </div>
+          </div>
+          <!-- Service 3: Visa Application -->
+          <div
+            class="bento-card bg-surface/5 border border-white/10 p-8 rounded-xl flex flex-col justify-between min-h-[320px] group hover:bg-secondary hover:text-primary"
+          >
+            <div>
+              <span
+                class="material-symbols-outlined text-4xl text-secondary group-hover:text-primary transition-colors mb-6"
+                >password</span
+              >
+              <h3 class="font-title-lg text-title-lg mb-4">Visa Application</h3>
+              <ul
+                class="space-y-2 font-label-md text-label-md text-on-primary-container group-hover:text-primary/80"
+              >
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Expert Counseling
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Document Review
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Interview Coaching
+                </li>
+              </ul>
+            </div>
+            <div class="pt-6 group-hover:text-primary">
+              <span class="material-symbols-outlined">arrow_outward</span>
+            </div>
+          </div>
+          <!-- Service 4: Schools Application -->
+          <div
+            class="bento-card bg-surface/5 border border-white/10 p-8 rounded-xl flex flex-col justify-between min-h-[320px] group hover:bg-secondary hover:text-primary"
+          >
+            <div>
+              <span
+                class="material-symbols-outlined text-4xl text-secondary group-hover:text-primary transition-colors mb-6"
+                >travel_explore</span
+              >
+              <h3 class="font-title-lg text-title-lg mb-4">
+                Schools Application
+              </h3>
+              <ul
+                class="space-y-2 font-label-md text-label-md text-on-primary-container group-hover:text-primary/80"
+              >
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Placement Guidance
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Essay Support
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm"
+                    >check_circle</span
+                  >
+                  Scholarship Mapping
+                </li>
+              </ul>
+            </div>
+            <div class="pt-6 group-hover:text-primary">
+              <span class="material-symbols-outlined">arrow_outward</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="py-24 bg-surface-container-low" id="testimonials">
+      <div class="max-w-container-max mx-auto px-margin-desktop">
+        <div class="text-center mb-16 space-y-4">
+          <h2 class="font-headline-md text-headline-md text-primary">
+            Success Stories from Our Students
+          </h2>
+          <p
+            class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto"
+          >
+            Hear from those who have achieved their international academic
+            dreams with our guidance.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-md border border-outline-variant flex flex-col gap-6"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-16 h-16 rounded-full overflow-hidden border-2 border-secondary"
+              >
+                <img
+                  alt="Kwesi B."
+                  class="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3lDkORACjsmnHUPrzsnI-Rduq3k-Yb2cLKKG-dIGXYxlAju4cmVasNvH0aCECienB0XqCxT6QoCe-MB_ZwMzSPCP9LaMmQXioj-M76AmXMzbs2IM2yciVSNXpG0RabHaeGQ3H12DCPDRqRfbc4o16D4YRQwZG-HnKDd2IUKsDWD_sqNvfMYvvgYhltwSuoKBXaDxdfyq1JbH26mhwN9EssT8xZzHEAusaktZ4CVOPelPd8zgaSnt6HluDz0SI5o9dz95UcNLzKdDg"
+                />
+              </div>
+              <div>
+                <div class="font-title-lg text-title-lg text-primary">
+                  Kwesi B.
+                </div>
+                <div
+                  class="text-secondary font-label-sm text-label-sm uppercase tracking-wider"
+                >
+                  SAT Prep
+                </div>
+              </div>
+            </div>
+            <div class="flex text-secondary">
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+            </div>
+            <p
+              class="font-body-md text-body-md text-on-surface-variant italic leading-relaxed"
+            >
+              "The SAT prep at Oburoni was a game-changer. The tutors were
+              patient and the mock exams really prepared me for the real thing."
+            </p>
+          </div>
+          <!-- Testimonial 2 -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-md border border-outline-variant flex flex-col gap-6"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-16 h-16 rounded-full overflow-hidden border-2 border-secondary"
+              >
+                <img
+                  alt="Ama R."
+                  class="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG5Prg65EK2AthFhJ-PkjvjBaz8PPOrwFlezX4Iu3pJDD9Mez0HVs7VOyvkcX4IjcC_nPplBC6jgtPWChoGuXcqE5EkqoYeyOmHlBaGRqz3hqiuqHwrF6bOnQS_hGpviVdwxUOk8HepOG-0_Y7rs9w0v-XFRJoQFQeJH51zMf53T4P1qiii7cWbVRl8l7Unqmav8bEBKqaheVAAAInn4myURh3zTCGHXP4qdJYDVE5RU_V8QDO3WIORpd9O44DqsyjhLjiVl8Lcrwb"
+                />
+              </div>
+              <div>
+                <div class="font-title-lg text-title-lg text-primary">
+                  Ama R.
+                </div>
+                <div
+                  class="text-secondary font-label-sm text-label-sm uppercase tracking-wider"
+                >
+                  Nursing Exams
+                </div>
+              </div>
+            </div>
+            <div class="flex text-secondary">
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+            </div>
+            <p
+              class="font-body-md text-body-md text-on-surface-variant italic leading-relaxed"
+            >
+              "I was so nervous about my Nursing exams, but the support here was
+              incredible. I passed on my first attempt!"
+            </p>
+          </div>
+          <!-- Testimonial 3 -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-md border border-outline-variant flex flex-col gap-6"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-16 h-16 rounded-full overflow-hidden border-2 border-secondary"
+              >
+                <img
+                  alt="Yaw O."
+                  class="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgppAo4JUpN9yMKrBNixhxKGjFh-EjTcoKBpLf7XyqFdvt-e-6W-nv_leTU80oYNq4AI_VNg5PrYS8Mp4WQvfKmwJZtsLnVRHrkn4D_P_h3x-VayG_2Oz4Zoj0EKdjN0JQPL35V92vMGjrDJ3BGvZs_--FmWaJCcqBLFYucvMvGEIkpmqRpPVGyGClZNpAX7jFyt2A8iXzlaLisuqPott2vwIBJufW75f2er_xM2B_DFUONeT_ywT-SqppzqMidHKNoXqmMD7c0lW5"
+                />
+              </div>
+              <div>
+                <div class="font-title-lg text-title-lg text-primary">
+                  Yaw O.
+                </div>
+                <div
+                  class="text-secondary font-label-sm text-label-sm uppercase tracking-wider"
+                >
+                  Visa Application
+                </div>
+              </div>
+            </div>
+            <div class="flex text-secondary">
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+              <span class="material-symbols-outlined">star</span>
+            </div>
+            <p
+              class="font-body-md text-body-md text-on-surface-variant italic leading-relaxed"
+            >
+              "They made my visa application process seamless. I highly
+              recommend their services to anyone looking to study abroad."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-surface" id="contact">
+      <div class="max-w-container-max mx-auto px-margin-desktop">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+          <div class="space-y-8">
+            <h2 class="font-headline-md text-headline-md text-primary">
+              Start Your Success Story Today
+            </h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">
+              Connect with our consultants for a detailed assessment of your
+              academic path. We respond to all inquiries within 24 hours.
+            </p>
+            <div class="space-y-6">
+              <div class="flex items-center gap-4">
+                <div class="bg-secondary/10 p-4 rounded-full">
+                  <span class="material-symbols-outlined text-secondary"
+                    >mail</span
+                  >
+                </div>
+                <div>
+                  <div
+                    class="font-label-sm text-label-sm text-on-surface-variant uppercase"
+                  >
+                    Email Us
+                  </div>
+                  <div class="font-title-lg text-title-lg text-primary">
+                    info@oburonieducationalconsult.com
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="bg-secondary/10 p-4 rounded-full">
+                  <span class="material-symbols-outlined text-secondary"
+                    >call</span
+                  >
+                </div>
+                <div>
+                  <div
+                    class="font-label-sm text-label-sm text-on-surface-variant uppercase"
+                  >
+                    Call Us
+                  </div>
+                  <div class="font-title-lg text-title-lg text-primary">
+                    +233 50 000 0000
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="p-1 border border-outline-variant rounded-xl overflow-hidden grayscale contrast-125 opacity-70"
+            >
+              <div
+                class="h-48 w-full bg-surface-container flex items-center justify-center"
+                data-location="Accra, Ghana"
+                style=""
+              >
+                <span
+                  class="material-symbols-outlined text-4xl text-on-surface-variant"
+                  >map</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-outline-variant p-10 rounded-2xl shadow-xl"
+          >
+            <form class="space-y-6">
+              <div class="space-y-2">
+                <label
+                  class="font-label-md text-label-md text-on-surface-variant block"
+                  >Full Name</label
+                >
+                <input
+                  class="w-full px-4 py-3 border border-outline-variant rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition-all outline-none"
+                  placeholder="John Doe"
+                  type="text"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="font-label-md text-label-md text-on-surface-variant block"
+                  >Email Address</label
+                >
+                <input
+                  class="w-full px-4 py-3 border border-outline-variant rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition-all outline-none"
+                  placeholder="john@example.com"
+                  type="email"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="font-label-md text-label-md text-on-surface-variant block"
+                  >Service Interested In</label
+                >
+                <select
+                  class="w-full px-4 py-3 border border-outline-variant rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition-all outline-none"
+                >
+                  <option>SAT Preparation</option>
+                  <option>Nursing Exam Support</option>
+                  <option>Visa Guidance</option>
+                  <option>School Placement</option>
+                </select>
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="font-label-md text-label-md text-on-surface-variant block"
+                  >Message</label
+                >
+                <textarea
+                  class="w-full px-4 py-3 border border-outline-variant rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition-all outline-none resize-none"
+                  placeholder="How can we help you?"
+                  rows="4"
+                ></textarea>
+              </div>
+              <button
+                class="w-full bg-primary text-on-primary font-bold py-4 rounded-lg hover:bg-secondary transition-all shadow-md"
+                type="submit"
+              >
+                Send Inquiry
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer
+      class="bg-primary-container dark:bg-surface-container-lowest w-full"
+    >
+      <div
+        class="max-w-container-max mx-auto px-margin-desktop py-12 flex flex-col items-center gap-6"
+      >
+        <div
+          class="font-title-lg text-title-lg text-on-primary-container dark:text-on-surface font-bold"
+        >
+          Oburoni Educational Consult
+        </div>
+        <div class="flex flex-wrap justify-center gap-8">
+          <a
+            class="font-body-md text-body-md text-on-primary-fixed-variant hover:text-secondary transition-colors duration-200"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="font-body-md text-body-md text-on-primary-fixed-variant hover:text-secondary transition-colors duration-200"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="font-body-md text-body-md text-on-primary-fixed-variant hover:text-secondary transition-colors duration-200"
+            href="#"
+            >FAQ</a
+          >
+          <a
+            class="font-body-md text-body-md text-on-primary-fixed-variant hover:text-secondary transition-colors duration-200"
+            href="mailto:info@oburonieducationalconsult.com"
+            >info@oburonieducationalconsult.com</a
+          >
+        </div>
+        <div class="h-px w-full max-w-sm bg-white/10"></div>
+        <div
+          class="font-body-md text-body-md text-on-primary-fixed-variant text-center"
+        >
+          © 2024 Oburoni Educational Consult. Empowering Your Academic Journey.
+        </div>
+        <div class="flex gap-4">
+          <a
+            class="p-2 bg-on-primary-container/10 rounded-full hover:bg-secondary hover:text-primary transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined">public</span>
+          </a>
+          <a
+            class="p-2 bg-on-primary-container/10 rounded-full hover:bg-secondary hover:text-primary transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined">share</span>
+          </a>
+          <a
+            class="p-2 bg-on-primary-container/10 rounded-full hover:bg-secondary hover:text-primary transition-all"
+            href="#"
+          >
+            <span class="material-symbols-outlined">verified_user</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Micro-interactions and Scroll Logic
+      const nav = document.querySelector('nav');
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          nav.classList.add('bg-white', 'py-2');
+          nav.classList.remove('bg-surface', 'py-4');
+        } else {
+          nav.classList.remove('bg-white', 'py-2');
+          nav.classList.add('bg-surface', 'py-4');
+        }
+      });
+
+      // Form Submission Simulation
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Sending...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+          btn.innerHTML = "Thank You! We'll be in touch.";
+          btn.classList.add('bg-secondary', 'text-primary');
+          form.reset();
+        }, 1500);
+      });
+
+      // Reveal animations on scroll
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.bento-card').forEach((card) => {
+        card.classList.add(
+          'opacity-0',
+          'translate-y-10',
+          'transition-all',
+          'duration-700',
+        );
+        observer.observe(card);
+      });
+    </script>
+  </body>
+</html>

@@ -1,9 +1,0 @@
-﻿
-M	.gitignore
-A	frontend/package-lock
-.json
-M	frontend/src/componen
-ts/Testimonials.jsx
-A	package-lock.json
-
-

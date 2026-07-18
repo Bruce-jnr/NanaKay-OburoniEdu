@@ -1,4 +1,5 @@
 const path = require('path');
+const dns = require('dns');
 const express = require('express');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
@@ -12,14 +13,28 @@ const frontendDist = path.resolve(__dirname, 'frontend/dist');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Nodemailer transporter (Gmail + App Password)
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
-  },
-});
+// Resolve Gmail over IPv4 because some production hosts advertise IPv6 but do
+// not have a working IPv6 route. Keep servername set for TLS verification.
+async function createMailTransporter() {
+  const addresses = await dns.promises.resolve4('smtp.gmail.com');
+
+  if (!addresses.length) {
+    throw new Error('Could not resolve an IPv4 address for smtp.gmail.com');
+  }
+
+  return nodemailer.createTransport({
+    host: addresses[0],
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+    tls: {
+      servername: 'smtp.gmail.com',
+    },
+  });
+}
 
 // Health check
 app.get('/api/health', (_req, res) => {
@@ -57,6 +72,7 @@ app.post('/api/contact', async (req, res) => {
   };
 
   try {
+    const transporter = await createMailTransporter();
     await transporter.sendMail(mailOptions);
     res.json({ success: true, message: 'Your enquiry has been sent successfully.' });
   } catch (err) {

@@ -1,1 +1,17 @@
-export default function Newsletter(){return <section className="newsletter"><div className="container"><div><h2>Ready to take the next step?</h2><p>Let’s build the strongest route to your international education.</p></div><a className="btn btn-gold" href="#contact">Book a consultation →</a></div></section>}
+export default function Newsletter() {
+  return (
+    <section className="newsletter">
+      <div className="container">
+        <div>
+          <h2>Ready to take the next step?</h2>
+          <p>
+            Let’s build the strongest route to your international education.
+          </p>
+        </div>
+        <a className="btn btn-gold" href="#contact">
+          Book a consultation →
+        </a>
+      </div>
+    </section>
+  );
+}

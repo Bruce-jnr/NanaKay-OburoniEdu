@@ -1,7 +1,6 @@
 const path = require('path');
-const dns = require('dns');
 const express = require('express');
-const nodemailer = require('nodemailer');
+const postmark = require('postmark');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -13,27 +12,13 @@ const frontendDist = path.resolve(__dirname, '../frontend/dist');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Resolve Gmail over IPv4 because some production hosts advertise IPv6 but do
-// not have a working IPv6 route. Keep servername set for TLS verification.
-async function createMailTransporter() {
-  const addresses = await dns.promises.resolve4('smtp.gmail.com');
-
-  if (!addresses.length) {
-    throw new Error('Could not resolve an IPv4 address for smtp.gmail.com');
-  }
-
-  return nodemailer.createTransport({
-    host: addresses[0],
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASSWORD,
-    },
-    tls: {
-      servername: 'smtp.gmail.com',
-    },
-  });
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
 }
 
 // Health check
@@ -49,31 +34,41 @@ app.post('/api/contact', async (req, res) => {
     return res.status(400).json({ error: 'Name, email, and message are required.' });
   }
 
+  const token = process.env.POSTMARK_SERVER_TOKEN;
+  const sender = process.env.POSTMARK_FROM_EMAIL || process.env.GMAIL_USER;
   const recipient = process.env.CONTACT_RECIPIENT;
-  if (!recipient) {
-    console.error('CONTACT_RECIPIENT is not set in .env');
-    return res.status(500).json({ error: 'Server misconfiguration: recipient not set.' });
+
+  if (!token || !sender || !recipient) {
+    console.error('Postmark configuration is incomplete.');
+    return res.status(500).json({ error: 'Server email configuration is incomplete.' });
   }
 
-  const mailOptions = {
-    from: `"NanaKay Edu Contact" <${process.env.GMAIL_USER}>`,
-    to: recipient,
-    replyTo: email,
-    subject: `New Enquiry from ${name} – ${service || 'General'}`,
-    html: `
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeService = escapeHtml(service || 'Not specified');
+  const safeMessage = escapeHtml(message).replace(/\r?\n/g, '<br>');
+
+  const mail = {
+    From: `NanaKay Edu Contact <${sender}>`,
+    To: recipient,
+    ReplyTo: email,
+    Subject: `New Enquiry from ${name} - ${service || 'General'}`,
+    HtmlBody: `
       <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-      <p><strong>Service Interested In:</strong> ${service || 'Not specified'}</p>
+      <p><strong>Name:</strong> ${safeName}</p>
+      <p><strong>Email:</strong> ${safeEmail}</p>
+      <p><strong>Service Interested In:</strong> ${safeService}</p>
       <hr/>
       <p><strong>Message:</strong></p>
-      <p>${message.replace(/\n/g, '<br/>')}</p>
+      <p>${safeMessage}</p>
     `,
+    TextBody: `Name: ${name}\nEmail: ${email}\nService: ${service || 'Not specified'}\n\nMessage:\n${message}`,
+    MessageStream: 'outbound',
   };
 
   try {
-    const transporter = await createMailTransporter();
-    await transporter.sendMail(mailOptions);
+    const client = new postmark.ServerClient(token);
+    await client.sendEmail(mail);
     res.json({ success: true, message: 'Your enquiry has been sent successfully.' });
   } catch (err) {
     console.error('Email send error:', err);

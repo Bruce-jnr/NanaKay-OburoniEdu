@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const postmark = require('postmark');
+const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -34,12 +34,12 @@ app.post('/api/contact', async (req, res) => {
     return res.status(400).json({ error: 'Name, email, and message are required.' });
   }
 
-  const token = process.env.POSTMARK_SERVER_TOKEN;
-  const sender = process.env.POSTMARK_FROM_EMAIL || process.env.GMAIL_USER;
+  const poolUser = process.env.GMAIL_USER;
+  const poolPass = process.env.GMAIL_APP_PASSWORD;
   const recipient = process.env.CONTACT_RECIPIENT;
 
-  if (!token || !sender || !recipient) {
-    console.error('Postmark configuration is incomplete.');
+  if (!poolUser || !poolPass || !recipient) {
+    console.error('Gmail SMTP configuration is incomplete.');
     return res.status(500).json({ error: 'Server email configuration is incomplete.' });
   }
 
@@ -48,12 +48,20 @@ app.post('/api/contact', async (req, res) => {
   const safeService = escapeHtml(service || 'Not specified');
   const safeMessage = escapeHtml(message).replace(/\r?\n/g, '<br>');
 
-  const mail = {
-    From: `NanaKay Edu Contact <${sender}>`,
-    To: recipient,
-    ReplyTo: email,
-    Subject: `New Enquiry from ${name} - ${service || 'General'}`,
-    HtmlBody: `
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: poolUser,
+      pass: poolPass,
+    },
+  });
+
+  const mailOptions = {
+    from: `"NanaKay Edu Contact" <${poolUser}>`,
+    to: recipient,
+    replyTo: email,
+    subject: `New Enquiry from ${name} - ${service || 'General'}`,
+    html: `
       <h2>New Contact Form Submission</h2>
       <p><strong>Name:</strong> ${safeName}</p>
       <p><strong>Email:</strong> ${safeEmail}</p>
@@ -62,13 +70,11 @@ app.post('/api/contact', async (req, res) => {
       <p><strong>Message:</strong></p>
       <p>${safeMessage}</p>
     `,
-    TextBody: `Name: ${name}\nEmail: ${email}\nService: ${service || 'Not specified'}\n\nMessage:\n${message}`,
-    MessageStream: 'outbound',
+    text: `Name: ${name}\nEmail: ${email}\nService: ${service || 'Not specified'}\n\nMessage:\n${message}`,
   };
 
   try {
-    const client = new postmark.ServerClient(token);
-    await client.sendEmail(mail);
+    await transporter.sendMail(mailOptions);
     res.json({ success: true, message: 'Your enquiry has been sent successfully.' });
   } catch (err) {
     console.error('Email send error:', err);
